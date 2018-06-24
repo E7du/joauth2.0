@@ -77,6 +77,6 @@ public abstract class OAuthResponse {
 
 	@Override
 	public String toString() {
-		return "OAuthResponse [parameters=" + parameters + "] AND JSON Format "+JsonKit.toJson(this);
+		return "OAuthResponse [parameters=" + parameters + "] AND JSON Format "+JsonKit.toJson(this.parameters);
 	}
 }
