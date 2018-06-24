@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import cn.zhucongqi.oauth2.base.clientcredentials.OAuthClientCredentials;
 import cn.zhucongqi.oauth2.base.validator.OAuthValidator;
-import cn.zhucongqi.oauth2.consts.OAuthRequestConsts;
 import cn.zhucongqi.oauth2.exception.OAuthProblemException;
 import cn.zhucongqi.oauth2.validators.AccessTokenRequestValidator;
 import cn.zhucongqi.oauth2.validators.AuthorizationRequestValidator;
@@ -28,47 +27,57 @@ public class OAuthRequest {
 	 * init oauth request using AccessTokenRequestValidator
 	 * @param request
 	 */
-	public OAuthRequest(HttpServletRequest request) {
+	private OAuthRequest(HttpServletRequest request) {
 		this.request = request;
-		this.validator = new AccessTokenRequestValidator(request);
 	}
 	
-	/**
-	 * init oauth request
-	 * @param request
-	 * @param reqType: current request type {@link OAuthRequestConsts}
-	 */
-	public OAuthRequest(HttpServletRequest request, int reqType, OAuthClientCredentials clientCredential) {
-		
-		switch (reqType) {
-		case OAuthRequestConsts.AUTHORIZATION_REQUEST: {
-			this.validator = new AuthorizationRequestValidator(request);
-		}
-			break;
-
-		case OAuthRequestConsts.ACCESS_TOKEN_REQUEST: {
-			this.validator = new AccessTokenRequestValidator(request);
-		}
-			break;
-		case OAuthRequestConsts.CLIENT_CREDENTIAL_REQUEST: {
-			this.validator = new ClientCredentialValidator(request);
-		}
-			break;
-		case OAuthRequestConsts.IMPLICIT_REQUEST: {
-			this.validator = new ImplicitValidator(request);
-		}
-			break;
-		case OAuthRequestConsts.PASSOWRD_CREDENTIAL_REQUEST: {
-			this.validator = new PasswordCredentialValidator(request);
-		}
-			break;
-		case OAuthRequestConsts.REFRESH_TOKEN_REQUEST: {
-			this.validator = new RefreshTokenValidator(request);
-		}
-			break;
-		}
-		
-		this.validator.setClientCredentials(clientCredential);
+	public static OAuthRequest authorizatonRequest(HttpServletRequest request, OAuthClientCredentials clientCredential) {
+		OAuthRequest oauthRequest = new OAuthRequest(request);
+		OAuthValidator validator = new AuthorizationRequestValidator(request);
+		validator.setClientCredentials(clientCredential);
+		oauthRequest.validator = validator;
+		return oauthRequest;
+	}
+	
+	
+	public static OAuthRequest accessTokenRequest(HttpServletRequest request, OAuthClientCredentials clientCredential) {
+		OAuthRequest oauthRequest = new OAuthRequest(request);
+		OAuthValidator validator = new AccessTokenRequestValidator(request);
+		validator.setClientCredentials(clientCredential);
+		oauthRequest.validator = validator;
+		return oauthRequest;
+	}
+	
+	public static OAuthRequest clientCredentialRequest(HttpServletRequest request, OAuthClientCredentials clientCredential) {
+		OAuthRequest oauthRequest = new OAuthRequest(request);
+		OAuthValidator validator = new ClientCredentialValidator(request);
+		validator.setClientCredentials(clientCredential);
+		oauthRequest.validator = validator;
+		return oauthRequest;
+	}
+	
+	public static OAuthRequest implicitRequest(HttpServletRequest request, OAuthClientCredentials clientCredential) {
+		OAuthRequest oauthRequest = new OAuthRequest(request);
+		OAuthValidator validator = new ImplicitValidator(request);
+		validator.setClientCredentials(clientCredential);
+		oauthRequest.validator = validator;
+		return oauthRequest;
+	}
+	
+	public static OAuthRequest passwordCredentialRequest(HttpServletRequest request, OAuthClientCredentials clientCredential) {
+		OAuthRequest oauthRequest = new OAuthRequest(request);
+		OAuthValidator validator = new PasswordCredentialValidator(request);
+		validator.setClientCredentials(clientCredential);
+		oauthRequest.validator = validator;
+		return oauthRequest;
+	}
+	
+	public static OAuthRequest refreshTokenRequest(HttpServletRequest request, OAuthClientCredentials clientCredential) {
+		OAuthRequest oauthRequest = new OAuthRequest(request);
+		OAuthValidator validator = new RefreshTokenValidator(request);
+		validator.setClientCredentials(clientCredential);
+		oauthRequest.validator = validator;
+		return oauthRequest;
 	}
 	
 	/**
