@@ -31,6 +31,12 @@ public class OAuthRequest {
 		this.request = request;
 	}
 	
+	/**
+	 * authorization request
+	 * @param request
+	 * @param clientCredential
+	 * @return
+	 */
 	public static OAuthRequest authorizatonRequest(HttpServletRequest request, OAuthClientCredentials clientCredential) {
 		OAuthRequest oauthRequest = new OAuthRequest(request);
 		OAuthValidator validator = new AuthorizationRequestValidator(request);
@@ -39,7 +45,12 @@ public class OAuthRequest {
 		return oauthRequest;
 	}
 	
-	
+	/**
+	 * accessToken request
+	 * @param request
+	 * @param clientCredential
+	 * @return
+	 */
 	public static OAuthRequest accessTokenRequest(HttpServletRequest request, OAuthClientCredentials clientCredential) {
 		OAuthRequest oauthRequest = new OAuthRequest(request);
 		OAuthValidator validator = new AccessTokenRequestValidator(request);
@@ -48,6 +59,12 @@ public class OAuthRequest {
 		return oauthRequest;
 	}
 	
+	/**
+	 * client credential request
+	 * @param request
+	 * @param clientCredential
+	 * @return
+	 */
 	public static OAuthRequest clientCredentialRequest(HttpServletRequest request, OAuthClientCredentials clientCredential) {
 		OAuthRequest oauthRequest = new OAuthRequest(request);
 		OAuthValidator validator = new ClientCredentialValidator(request);
@@ -56,6 +73,12 @@ public class OAuthRequest {
 		return oauthRequest;
 	}
 	
+	/**
+	 * implicit request
+	 * @param request
+	 * @param clientCredential
+	 * @return
+	 */
 	public static OAuthRequest implicitRequest(HttpServletRequest request, OAuthClientCredentials clientCredential) {
 		OAuthRequest oauthRequest = new OAuthRequest(request);
 		OAuthValidator validator = new ImplicitValidator(request);
@@ -64,6 +87,12 @@ public class OAuthRequest {
 		return oauthRequest;
 	}
 	
+	/**
+	 * password credential / secure accessToken request
+	 * @param request
+	 * @param clientCredential
+	 * @return
+	 */
 	public static OAuthRequest passwordCredentialRequest(HttpServletRequest request, OAuthClientCredentials clientCredential) {
 		OAuthRequest oauthRequest = new OAuthRequest(request);
 		OAuthValidator validator = new PasswordCredentialValidator(request);
@@ -72,6 +101,12 @@ public class OAuthRequest {
 		return oauthRequest;
 	}
 	
+	/**
+	 * refresh token request
+	 * @param request
+	 * @param clientCredential
+	 * @return
+	 */
 	public static OAuthRequest refreshTokenRequest(HttpServletRequest request, OAuthClientCredentials clientCredential) {
 		OAuthRequest oauthRequest = new OAuthRequest(request);
 		OAuthValidator validator = new RefreshTokenValidator(request);
