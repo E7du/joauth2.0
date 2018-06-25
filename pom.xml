@@ -5,6 +5,9 @@
 	<groupId>cn.zhucongqi</groupId>
 	<artifactId>joauth2.0</artifactId>
 	<version>1.0.0</version>
+	<packaging>jar</packaging>
+	<name>joauth2.0</name>
+	<description>joauth2.0</description>
 	<url>https://github.com/E7du/joauth2.0/</url>
 	<licenses>
 		<license>
@@ -25,6 +28,10 @@
 		<developerConnection>scm:git:git@github.com:E7du/joauth2.0.git</developerConnection>
 		<url>git@github.com:E7du/joauth2.0.git</url>
 	</scm>
+	<properties>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>com.jfinal</groupId>
