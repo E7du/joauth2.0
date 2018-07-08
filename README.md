@@ -11,5 +11,5 @@ USING（已同步到Central）
 		<dependency>
 			<groupId>cn.zhucongqi</groupId>
 			<artifactId>joauth2.0</artifactId>
-			<version>1.0.0</version>
+			<version>new_version</version>
 		</dependency>
