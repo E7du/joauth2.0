@@ -8,8 +8,6 @@ import java.util.StringTokenizer;
 
 import javax.servlet.http.HttpServletResponse;
 
-import com.jfinal.kit.StrKit;
-
 import cn.zhucongqi.oauth2.consts.OAuthRequestErrCodes;
 import cn.zhucongqi.oauth2.exception.OAuthProblemException;
 

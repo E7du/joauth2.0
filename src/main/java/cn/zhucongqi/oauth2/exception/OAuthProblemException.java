@@ -9,7 +9,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
-import com.jfinal.kit.StrKit;
+import cn.zhucongqi.oauth2.kit.StrKit;
 
 /**
  * 

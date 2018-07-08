@@ -5,12 +5,10 @@ package cn.zhucongqi.oauth2.base.response;
 
 import java.util.HashMap;
 
-import com.jfinal.kit.JsonKit;
-import com.jfinal.kit.StrKit;
-
 import cn.zhucongqi.oauth2.base.validator.OAuthValidator;
 import cn.zhucongqi.oauth2.consts.OAuthConsts;
 import cn.zhucongqi.oauth2.issuer.OAuthIssuerKit;
+import cn.zhucongqi.oauth2.kit.StrKit;
 
 /**
  * @author Jobsz [zcq@zhucongqi.cn]
@@ -77,6 +75,6 @@ public abstract class OAuthResponse {
 
 	@Override
 	public String toString() {
-		return "OAuthResponse [parameters=" + parameters + "] AND JSON Format "+JsonKit.toJson(this.parameters);
+		return "OAuthResponse [parameters=" + parameters + "]";
 	}
 }

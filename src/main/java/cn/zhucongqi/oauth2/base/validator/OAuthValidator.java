@@ -8,13 +8,12 @@ import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.jfinal.kit.StrKit;
-
 import cn.zhucongqi.oauth2.base.clientcredentials.OAuthClientCredentials;
 import cn.zhucongqi.oauth2.consts.OAuthConsts;
 import cn.zhucongqi.oauth2.consts.OAuthError;
 import cn.zhucongqi.oauth2.exception.OAuthProblemException;
 import cn.zhucongqi.oauth2.kit.OAuthExceptionHandleKit;
+import cn.zhucongqi.oauth2.kit.StrKit;
 
 /**
  * OAuthConsts Request Validator

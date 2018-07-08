@@ -5,7 +5,7 @@ package cn.zhucongqi.oauth2.issuer;
 
 import java.util.UUID;
 
-import com.jfinal.kit.HashKit;
+import cn.zhucongqi.oauth2.kit.HashKit;
 
 
 /**
