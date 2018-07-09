@@ -6,14 +6,13 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import javax.servlet.http.HttpServletRequest;
-
 import cn.zhucongqi.oauth2.base.clientcredentials.OAuthClientCredentials;
 import cn.zhucongqi.oauth2.consts.OAuthConsts;
 import cn.zhucongqi.oauth2.consts.OAuthError;
 import cn.zhucongqi.oauth2.exception.OAuthProblemException;
 import cn.zhucongqi.oauth2.kit.OAuthExceptionHandleKit;
 import cn.zhucongqi.oauth2.kit.StrKit;
+import cn.zhucongqi.oauth2.request.OAuthHttpServletRequest;
 
 /**
  * OAuthConsts Request Validator
@@ -23,7 +22,7 @@ import cn.zhucongqi.oauth2.kit.StrKit;
  */
 public abstract class OAuthValidator {
 
-	private HttpServletRequest request = null;
+	private OAuthHttpServletRequest request = null;
 	//request require parameter's name
     protected List<String> requiredParams = new ArrayList<String>();
     //request require parameter's default value
@@ -31,7 +30,7 @@ public abstract class OAuthValidator {
     
     private OAuthClientCredentials clientCredentials = null;
     
-    public OAuthValidator(HttpServletRequest request) {
+    public OAuthValidator(OAuthHttpServletRequest request) {
     	this.request = request;
     	//default require scope and state
     	this.requiredParams.add(OAuthConsts.OAuth.OAUTH_SCOPE);
@@ -224,7 +223,7 @@ public abstract class OAuthValidator {
 		return this.refreshToken;
 	}
 	
-	public HttpServletRequest getRequest() {
+	public OAuthHttpServletRequest getRequest() {
 		return this.request;
 	}
 	

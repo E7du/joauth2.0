@@ -32,11 +32,10 @@
  */
 package cn.zhucongqi.oauth2.validators;
 
-import javax.servlet.http.HttpServletRequest;
-
 import cn.zhucongqi.oauth2.base.response.types.GrantType;
 import cn.zhucongqi.oauth2.base.validator.OAuthValidator;
 import cn.zhucongqi.oauth2.consts.OAuthConsts;
+import cn.zhucongqi.oauth2.request.OAuthHttpServletRequest;
 
 /**
  * Client Credentials Grant
@@ -45,7 +44,7 @@ import cn.zhucongqi.oauth2.consts.OAuthConsts;
  */
 public class ClientCredentialValidator extends OAuthValidator {
    
-	public ClientCredentialValidator(HttpServletRequest request) {
+	public ClientCredentialValidator(OAuthHttpServletRequest request) {
 		super(request);
     }
 

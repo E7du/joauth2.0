@@ -3,8 +3,6 @@
  */
 package cn.zhucongqi.oauth2.request;
 
-import javax.servlet.http.HttpServletRequest;
-
 import cn.zhucongqi.oauth2.base.clientcredentials.OAuthClientCredentials;
 import cn.zhucongqi.oauth2.base.validator.OAuthValidator;
 import cn.zhucongqi.oauth2.exception.OAuthProblemException;
@@ -20,14 +18,14 @@ import cn.zhucongqi.oauth2.validators.RefreshTokenValidator;
  */
 public class OAuthRequest {
 
-	private HttpServletRequest request = null;
+	private OAuthHttpServletRequest request = null;
 	private OAuthValidator validator = null;
 	
 	/**
 	 * init oauth request using AccessTokenRequestValidator
 	 * @param request
 	 */
-	private OAuthRequest(HttpServletRequest request) {
+	private OAuthRequest(OAuthHttpServletRequest request) {
 		this.request = request;
 	}
 	
@@ -37,7 +35,7 @@ public class OAuthRequest {
 	 * @param clientCredential
 	 * @return
 	 */
-	public static OAuthRequest authorizatonRequest(HttpServletRequest request, OAuthClientCredentials clientCredential) {
+	public static OAuthRequest authorizatonRequest(OAuthHttpServletRequest request, OAuthClientCredentials clientCredential) {
 		OAuthRequest oauthRequest = new OAuthRequest(request);
 		OAuthValidator validator = new AuthorizationRequestValidator(request);
 		validator.setClientCredentials(clientCredential);
@@ -51,7 +49,7 @@ public class OAuthRequest {
 	 * @param clientCredential
 	 * @return
 	 */
-	public static OAuthRequest accessTokenRequest(HttpServletRequest request, OAuthClientCredentials clientCredential) {
+	public static OAuthRequest accessTokenRequest(OAuthHttpServletRequest request, OAuthClientCredentials clientCredential) {
 		OAuthRequest oauthRequest = new OAuthRequest(request);
 		OAuthValidator validator = new AccessTokenRequestValidator(request);
 		validator.setClientCredentials(clientCredential);
@@ -65,7 +63,7 @@ public class OAuthRequest {
 	 * @param clientCredential
 	 * @return
 	 */
-	public static OAuthRequest clientCredentialRequest(HttpServletRequest request, OAuthClientCredentials clientCredential) {
+	public static OAuthRequest clientCredentialRequest(OAuthHttpServletRequest request, OAuthClientCredentials clientCredential) {
 		OAuthRequest oauthRequest = new OAuthRequest(request);
 		OAuthValidator validator = new ClientCredentialValidator(request);
 		validator.setClientCredentials(clientCredential);
@@ -79,7 +77,7 @@ public class OAuthRequest {
 	 * @param clientCredential
 	 * @return
 	 */
-	public static OAuthRequest implicitRequest(HttpServletRequest request, OAuthClientCredentials clientCredential) {
+	public static OAuthRequest implicitRequest(OAuthHttpServletRequest request, OAuthClientCredentials clientCredential) {
 		OAuthRequest oauthRequest = new OAuthRequest(request);
 		OAuthValidator validator = new ImplicitValidator(request);
 		validator.setClientCredentials(clientCredential);
@@ -93,7 +91,7 @@ public class OAuthRequest {
 	 * @param clientCredential
 	 * @return
 	 */
-	public static OAuthRequest passwordCredentialRequest(HttpServletRequest request, OAuthClientCredentials clientCredential) {
+	public static OAuthRequest passwordCredentialRequest(OAuthHttpServletRequest request, OAuthClientCredentials clientCredential) {
 		OAuthRequest oauthRequest = new OAuthRequest(request);
 		OAuthValidator validator = new PasswordCredentialValidator(request);
 		validator.setClientCredentials(clientCredential);
@@ -107,7 +105,7 @@ public class OAuthRequest {
 	 * @param clientCredential
 	 * @return
 	 */
-	public static OAuthRequest refreshTokenRequest(HttpServletRequest request, OAuthClientCredentials clientCredential) {
+	public static OAuthRequest refreshTokenRequest(OAuthHttpServletRequest request, OAuthClientCredentials clientCredential) {
 		OAuthRequest oauthRequest = new OAuthRequest(request);
 		OAuthValidator validator = new RefreshTokenValidator(request);
 		validator.setClientCredentials(clientCredential);
@@ -127,7 +125,7 @@ public class OAuthRequest {
 	 * Get current request
 	 * @return
 	 */
-	public HttpServletRequest getRequest() {
+	public OAuthHttpServletRequest getRequest() {
 		return this.request;
 	}
 	
