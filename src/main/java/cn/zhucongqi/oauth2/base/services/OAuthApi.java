@@ -11,8 +11,6 @@ import cn.zhucongqi.oauth2.request.OAuthHttpServletRequest;
  */
 public interface OAuthApi {
 	
-	public void initRequest(OAuthHttpServletRequest request);
-
 	/**
 	 * Authorization  Code Request <br/>
 	 * response_type : code <br/>
@@ -35,9 +33,9 @@ public interface OAuthApi {
      * error_description : the erros repsonse description <br/>
      * state : The exact value received from the client.
 	 */
-	public Object authrize();
+	public Object authrize(OAuthHttpServletRequest request);
 	
-	public Object authrizeCode();
+	public Object authrizeCode(OAuthHttpServletRequest request);
 	
 	/**
 	 * Access Token Request <br/>
@@ -82,9 +80,9 @@ public interface OAuthApi {
      * state : The exact value received from the
          client.
 	 */
-	public Object accessToken();
+	public Object accessToken(OAuthHttpServletRequest request);
 	
-	public Object secureAccessToken();
+	public Object secureAccessToken(OAuthHttpServletRequest request);
 	
 	/**
 	 * Refreshing an Access Token <br/>
@@ -112,6 +110,6 @@ public interface OAuthApi {
      * state : The exact value received from the
          client.
 	 */
-	public Object refreshToken();
+	public Object refreshToken(OAuthHttpServletRequest request);
 		
 }

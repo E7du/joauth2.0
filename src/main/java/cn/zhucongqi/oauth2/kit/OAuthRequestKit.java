@@ -15,7 +15,8 @@ import cn.zhucongqi.oauth2.request.OAuthHttpServletRequest;
  */
 public final class OAuthRequestKit {
 
-	public static void cp(HttpServletRequest r, OAuthHttpServletRequest or) {
+	public static OAuthHttpServletRequest cp(HttpServletRequest r) {
+		OAuthHttpServletRequest or = new OAuthHttpServletRequest();
 		or.setContentType(r.getContentType());
 		or.setMethod(r.getMethod());
 		
@@ -26,6 +27,7 @@ public final class OAuthRequestKit {
 				or.setParameter(key, value);
 			}
 		}
+		return or;
 	}
 	
 }
