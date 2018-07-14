@@ -21,7 +21,6 @@ import java.util.HashMap;
 import java.util.List;
 
 import cn.zhucongqi.oauth2.consts.OAuthConsts;
-import cn.zhucongqi.oauth2.kit.StrKit;
 
 /**
  * OAuthHttpServletRequest.java
@@ -48,14 +47,6 @@ public class OAuthHttpServletRequest implements Serializable {
 	    this.parameters.add(OAuthConsts.OAuth.OAUTH_REFRESH_TOKEN);
 	    this.parameters.add(OAuthConsts.OAuth.OAUTH_SCOPE);
 	    this.parameters.add(OAuthConsts.OAuth.OAUTH_STATE);
-	}
-	
-	public void setExtParametes(String[] keys) {
-		for (String key : keys) {
-			if (StrKit.notBlank(key)) {
-				this.parameters.add(key);
-			}
-		}
 	}
 	
 	public List<String> getParameters() {

@@ -27,11 +27,11 @@ import cn.zhucongqi.oauth2.request.OAuthHttpServletRequest;
  */
 public final class OAuthRequestKit {
 
-	public static OAuthHttpServletRequest cp(HttpServletRequest r) {
+	public static OAuthHttpServletRequest cp(HttpServletRequest r, String... otherParameters) {
 		OAuthHttpServletRequest or = new OAuthHttpServletRequest();
 		or.setContentType(r.getContentType());
 		or.setMethod(r.getMethod());
-		
+
 		List<String> parameters = or.getParameters();
 		for (String key : parameters) {
 			String value = r.getParameter(key);
@@ -39,19 +39,17 @@ public final class OAuthRequestKit {
 				or.setParameter(key, value);
 			}
 		}
-		return or;
-	}
-	
-	public static OAuthHttpServletRequest cp(HttpServletRequest r, String[] otherParameters) {
-		OAuthHttpServletRequest or =  OAuthRequestKit.cp(r);
-		or.setExtParametes(otherParameters);
-		//put other parameter values
-		for (String key : otherParameters) {
-			String value = r.getParameter(key);
+		
+		for (String otherParameter : otherParameters) {
+			String value = r.getParameter(otherParameter);
 			if (StrKit.notBlank(value)) {
-				or.setParameter(key, value);
+				or.setParameter(otherParameter, value);
 			}
 		}
 		return or;
+	}
+	
+	public static OAuthHttpServletRequest cp(HttpServletRequest r) {
+		return OAuthRequestKit.cp(r, new String[] {});
 	}
 }
