@@ -45,6 +45,13 @@ public final class OAuthRequestKit {
 	public static OAuthHttpServletRequest cp(HttpServletRequest r, String[] otherParameters) {
 		OAuthHttpServletRequest or =  OAuthRequestKit.cp(r);
 		or.setExtParametes(otherParameters);
+		//put other parameter values
+		for (String key : otherParameters) {
+			String value = r.getParameter(key);
+			if (StrKit.notBlank(value)) {
+				or.setParameter(key, value);
+			}
+		}
 		return or;
 	}
 }
