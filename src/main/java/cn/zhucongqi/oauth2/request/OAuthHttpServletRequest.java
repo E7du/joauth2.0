@@ -1,6 +1,18 @@
-/**
+/*
+ * Copyright 2018 Jobsz(zhucongqi.cn)
  * 
- */
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License.  You may obtain a copy
+ * of the License at
+ * 
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+*/
 package cn.zhucongqi.oauth2.request;
 
 import java.io.Serializable;
@@ -9,6 +21,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import cn.zhucongqi.oauth2.consts.OAuthConsts;
+import cn.zhucongqi.oauth2.kit.StrKit;
 
 /**
  * OAuthHttpServletRequest.java
@@ -35,6 +48,14 @@ public class OAuthHttpServletRequest implements Serializable {
 	    this.parameters.add(OAuthConsts.OAuth.OAUTH_REFRESH_TOKEN);
 	    this.parameters.add(OAuthConsts.OAuth.OAUTH_SCOPE);
 	    this.parameters.add(OAuthConsts.OAuth.OAUTH_STATE);
+	}
+	
+	public void setExtParametes(String[] keys) {
+		for (String key : keys) {
+			if (StrKit.notBlank(key)) {
+				this.parameters.add(key);
+			}
+		}
 	}
 	
 	public List<String> getParameters() {

@@ -1,14 +1,18 @@
-/**
- * 4.2.1.  Authorization Request
- * GET /authorize?response_type=token&client_id=s6BhdRkqt3&state=xyz
-        &redirect_uri=https%3A%2F%2Fclient%2Eexample%2Ecom%2Fcb HTTP/1.1
-    Host: server.example.com
-    4.2.2.  Access Token Response
-     HTTP/1.1 302 Found
-     Location: http://example.com/cb#access_token=2YotnFZFEjr1zCsicMWpAA
-               &state=xyz&token_type=example&expires_in=3600
- */
-
+/*
+ * Copyright 2018 Jobsz(zhucongqi.cn)
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License.  You may obtain a copy
+ * of the License at
+ * 
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+*/
 package cn.zhucongqi.oauth2.validators;
 
 import cn.zhucongqi.oauth2.base.response.types.ResponseType;

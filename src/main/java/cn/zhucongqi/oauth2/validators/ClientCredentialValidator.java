@@ -1,35 +1,18 @@
-/**
- * http://www.rfcreader.com/#rfc6749
- * 4.4.2.  Access Token Request
+/*
+ * Copyright 2018 Jobsz(zhucongqi.cn)
  * 
- * The client can request an access token using only its client
-   credentials (or other supported means of authentication) when the
-   client is requesting access to the protected resources under its
-   control, or those of another resource owner that have been previously
-   arranged with the authorization server (the method of which is beyond
-   the scope of this specification).
-
-   The client credentials grant type MUST only be used by confidential
-   clients.
-
-     +---------+                                  +---------------+
-     |         |                                  |               |
-     |         |>--(A)- Client Authentication --->| Authorization |
-     | Client  |                                  |     Server    |
-     |         |<--(B)---- Access Token ---------<|               |
-     |         |                                  |               |
-     +---------+                                  +---------------+
-
-                     Figure 6: Client Credentials Flow
-
-   The flow illustrated in Figure 6 includes the following steps:
-
-   (A)  The client authenticates with the authorization server and
-        requests an access token from the token endpoint.
-
-   (B)  The authorization server authenticates the client, and if valid,
-        issues an access token.
- */
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License.  You may obtain a copy
+ * of the License at
+ * 
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+*/
 package cn.zhucongqi.oauth2.validators;
 
 import cn.zhucongqi.oauth2.base.response.types.GrantType;
