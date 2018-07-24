@@ -32,7 +32,9 @@ import cn.zhucongqi.oauth2.request.OAuthHttpServletRequest;
  */
 public class RefreshTokenValidator extends OAuthValidator {
 
-    public RefreshTokenValidator(OAuthHttpServletRequest request) {
+	private static final long serialVersionUID = -7784901389917919486L;
+
+	public RefreshTokenValidator(OAuthHttpServletRequest request) {
     	super(request);
     }
 

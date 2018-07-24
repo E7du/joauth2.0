@@ -15,6 +15,7 @@
 */
 package cn.zhucongqi.oauth2.base.validator;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -36,8 +37,10 @@ import cn.zhucongqi.oauth2.request.OAuthHttpServletRequest;
  * @version
  * @param <T>
  */
-public abstract class OAuthValidator {
+public abstract class OAuthValidator implements Serializable  {
 
+	private static final long serialVersionUID = 5311852229045397024L;
+	
 	private OAuthHttpServletRequest request = null;
 	//request require parameter's name
     protected List<String> requiredParams = new ArrayList<String>();

@@ -15,6 +15,7 @@
 */
 package cn.zhucongqi.oauth2.issuer;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 import cn.zhucongqi.oauth2.kit.HashKit;
@@ -25,9 +26,11 @@ import cn.zhucongqi.oauth2.kit.HashKit;
  * @author Jobsz [zcq@zhucongqi.cn]
  * @version
  */
-public final class ValueGenerator {
-	
-    public String generateValue() {
+public final class ValueGenerator implements Serializable {
+
+	private static final long serialVersionUID = -6094983886131907119L;
+
+	public String generateValue() {
         return generateValue(UUID.randomUUID().toString());
     }
 

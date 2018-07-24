@@ -44,6 +44,10 @@ public class OAuthAccessToken extends OAuthResponse {
 		this.put(OAuthConsts.OAuth.OAUTH_REFRESH_TOKEN, this.refreshToken());
 		this.setExpriresIn(Consts.TOKEN_EXPIRES_IN);
 	}
+	
+	public OAuthAccessToken() {
+		
+	}
 
 	public OAuthAccessToken(OAuthValidator validator) {
 		super(validator);

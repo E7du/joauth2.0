@@ -29,10 +29,12 @@ import cn.zhucongqi.oauth2.kit.StrKit;
  * @author Jobsz [zcq@zhucongqi.cn]
  * @version
  */
-public abstract class OAuthResponse extends HashMap<String, String> implements OAuthIssuer, Serializable {
+public abstract class OAuthResponse implements OAuthIssuer, Serializable {
 	
 	private static final long serialVersionUID = 3592197949369821211L;
+	
 	protected OAuthIssuerKit issuer = null;
+	private HashMap<String, String> map = null;
 	
 	protected abstract void init();
 	
@@ -51,6 +53,7 @@ public abstract class OAuthResponse extends HashMap<String, String> implements O
 	}
 	
 	private void init(OAuthValidator validator) {
+		this.map = new HashMap<String, String>();
 		String state = validator.getState();
 		if (StrKit.notBlank(state)) {
 			this.setState(state);
@@ -61,6 +64,14 @@ public abstract class OAuthResponse extends HashMap<String, String> implements O
 			this.setScope(scope);
 		}
 		this.init();
+	}
+	
+	protected void put(String key, String value) {
+		this.map.put(key, value);
+	}
+	
+	protected String get(String key) {
+		return this.map.get(key);
 	}
 	
 	private void setState(String state) {
@@ -83,8 +94,8 @@ public abstract class OAuthResponse extends HashMap<String, String> implements O
 	 * request is success or not
 	 * @return
 	 */
-	public boolean isSuccessed() {
-		return this.containsKey(OAuthError.OAUTH_ERROR);
+	public boolean successed() {
+		return this.map.containsKey(OAuthError.OAUTH_ERROR);
 	}
 	
 	/**
@@ -109,10 +120,5 @@ public abstract class OAuthResponse extends HashMap<String, String> implements O
 	@Override
 	public String refreshToken() {
 		return this.issuer.refreshToken();
-	}
-
-	@Override
-	public String toString() {
-		return "OAuthResponse [" + this + "]";
 	}
 }

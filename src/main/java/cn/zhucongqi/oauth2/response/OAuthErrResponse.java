@@ -33,6 +33,10 @@ public class OAuthErrResponse extends OAuthResponse {
 		
 	}
 	
+	public OAuthErrResponse() {
+		
+	}
+	
 	public OAuthErrResponse(OAuthValidator validator, OAuthProblemException e) {
 		super(validator);
 		this.setError(e.getError()).setErrorDescription(e.getDescription());
@@ -48,12 +52,27 @@ public class OAuthErrResponse extends OAuthResponse {
 	}
 	
 	/**
+	 * Get Error
+	 */
+	public String getError() {
+		return this.get(OAuthError.OAUTH_ERROR);
+	}
+	
+	/**
 	 * Set Error Description
 	 * @param errorDecription
 	 */
 	public OAuthErrResponse setErrorDescription(String errorDecription) {
 		this.put(OAuthError.OAUTH_ERROR_DESCRIPTION, errorDecription);
 		return this;
+	}
+	
+	/**
+	 * Get Error Description
+	 * @return
+	 */
+	public String getErrorDescription() {
+		return this.get(OAuthError.OAUTH_ERROR_DESCRIPTION);
 	}
 
 }

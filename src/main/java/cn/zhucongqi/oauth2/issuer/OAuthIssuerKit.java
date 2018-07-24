@@ -15,14 +15,17 @@
 */
 package cn.zhucongqi.oauth2.issuer;
 
+import java.io.Serializable;
+
 /**
  * 
  * @author Jobsz [zcq@zhucongqi.cn]
  * @version
  */
-public final class OAuthIssuerKit implements OAuthIssuer {
+public final class OAuthIssuerKit implements OAuthIssuer, Serializable {
 
-    private ValueGenerator vg = null;
+	private static final long serialVersionUID = 8458159302429943642L;
+	private ValueGenerator vg = null;
 
     public OAuthIssuerKit(ValueGenerator vg) {
         this.vg = vg;

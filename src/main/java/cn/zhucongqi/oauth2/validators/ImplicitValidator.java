@@ -28,7 +28,9 @@ import cn.zhucongqi.oauth2.request.OAuthHttpServletRequest;
  */
 public class ImplicitValidator extends OAuthValidator {
 
-    public ImplicitValidator(OAuthHttpServletRequest request) {
+	private static final long serialVersionUID = -5909780399126646357L;
+
+	public ImplicitValidator(OAuthHttpServletRequest request) {
     	super(request);
     }
 

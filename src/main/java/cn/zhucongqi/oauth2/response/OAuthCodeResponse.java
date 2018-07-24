@@ -32,6 +32,10 @@ public class OAuthCodeResponse extends OAuthResponse {
 		this.put(OAuthConsts.OAuth.OAUTH_AUTHORIZATION_CODE, this.authorizationCode());
 	}
 	
+	public OAuthCodeResponse() {
+		
+	}
+	
 	public OAuthCodeResponse(OAuthValidator validator) {
 		super(validator);
 	}

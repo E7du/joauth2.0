@@ -27,7 +27,9 @@ import cn.zhucongqi.oauth2.request.OAuthHttpServletRequest;
  */
 public class PasswordCredentialValidator extends OAuthValidator {
 
-    public PasswordCredentialValidator(OAuthHttpServletRequest request) {
+	private static final long serialVersionUID = 2436919621964158547L;
+
+	public PasswordCredentialValidator(OAuthHttpServletRequest request) {
     	super(request);
     }
 

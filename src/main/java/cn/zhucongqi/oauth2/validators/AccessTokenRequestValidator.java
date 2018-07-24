@@ -25,7 +25,9 @@ import cn.zhucongqi.oauth2.request.OAuthHttpServletRequest;
  */
 public class AccessTokenRequestValidator extends OAuthValidator {
 
-    public AccessTokenRequestValidator(OAuthHttpServletRequest request) {
+	private static final long serialVersionUID = 5953595155817038008L;
+
+	public AccessTokenRequestValidator(OAuthHttpServletRequest request) {
     	super(request);
     }
 
