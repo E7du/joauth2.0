@@ -86,7 +86,7 @@ public abstract class OAuthResponse extends HashMap implements OAuthIssuer, Seri
 	 * @return
 	 */
 	public boolean successed() {
-		return this.containsKey(OAuthError.OAUTH_ERROR);
+		return !this.containsKey(OAuthError.OAUTH_ERROR);
 	}
 	
 	/**
