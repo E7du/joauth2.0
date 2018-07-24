@@ -25,25 +25,18 @@ import cn.zhucongqi.oauth2.consts.OAuthConsts;
  */
 public class OAuthCodeResponse extends OAuthResponse {
 
+	private static final long serialVersionUID = 5581011166848147031L;
+	
 	@Override
 	protected void init() {
-		this.setAuthorizationCode(this.issuer.authorizationCode());
+		this.put(OAuthConsts.OAuth.OAUTH_AUTHORIZATION_CODE, this.authorizationCode());
 	}
 	
 	public OAuthCodeResponse(OAuthValidator validator) {
 		super(validator);
 	}
 
-	/**
-	 * Set code
-	 * @param code
-	 */
-	private OAuthCodeResponse setAuthorizationCode(String code) {
-		this.putParameter(OAuthConsts.OAuth.OAUTH_AUTHORIZATION_CODE, code);
-		return this;
-	}
-
 	public String getAuthorizationCode() {
-		return this.getParamter(OAuthConsts.OAuth.OAUTH_AUTHORIZATION_CODE);
+		return this.get(OAuthConsts.OAuth.OAUTH_AUTHORIZATION_CODE);
 	}
 }

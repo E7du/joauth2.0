@@ -15,10 +15,13 @@
 */
 package cn.zhucongqi.oauth2.base.response;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
 import cn.zhucongqi.oauth2.base.validator.OAuthValidator;
 import cn.zhucongqi.oauth2.consts.OAuthConsts;
+import cn.zhucongqi.oauth2.consts.OAuthError;
+import cn.zhucongqi.oauth2.issuer.OAuthIssuer;
 import cn.zhucongqi.oauth2.issuer.OAuthIssuerKit;
 import cn.zhucongqi.oauth2.kit.StrKit;
 
@@ -26,15 +29,28 @@ import cn.zhucongqi.oauth2.kit.StrKit;
  * @author Jobsz [zcq@zhucongqi.cn]
  * @version
  */
-public abstract class OAuthResponse {
+public abstract class OAuthResponse extends HashMap<String, String> implements OAuthIssuer, Serializable {
 	
-	protected HashMap<String, String> parameters = null;
+	private static final long serialVersionUID = 3592197949369821211L;
 	protected OAuthIssuerKit issuer = null;
 	
+	protected abstract void init();
+	
+	public OAuthResponse() {
+		
+	}
+	
 	public OAuthResponse(OAuthValidator validator) {
-		this.parameters = new HashMap<String, String>();
 		this.issuer = OAuthIssuerKit.issuer();
-		this.init();
+		this.init(validator);
+	}
+	
+	public OAuthResponse(OAuthValidator validator, OAuthIssuerKit issuer) {
+		this.issuer = issuer;
+		this.init(validator);
+	}
+	
+	private void init(OAuthValidator validator) {
 		String state = validator.getState();
 		if (StrKit.notBlank(state)) {
 			this.setState(state);
@@ -44,32 +60,31 @@ public abstract class OAuthResponse {
 		if (StrKit.notBlank(scope)) {
 			this.setScope(scope);
 		}
-	}
-	
-	protected abstract void init();
-	
-	protected void putParameter(String parameter, String value) {
-		this.parameters.put(parameter, value);
-	}
-	
-	protected String getParamter(String parameter) {
-		return this.parameters.get(parameter);
+		this.init();
 	}
 	
 	private void setState(String state) {
-		this.putParameter(OAuthConsts.OAuth.OAUTH_STATE, state);
+		this.put(OAuthConsts.OAuth.OAUTH_STATE, state);
 	}
 	
 	public String getState() {
-		return this.getParamter(OAuthConsts.OAuth.OAUTH_STATE);
+		return this.get(OAuthConsts.OAuth.OAUTH_STATE);
 	}
 	
 	private void setScope(String scope) {
-		this.putParameter(OAuthConsts.OAuth.OAUTH_SCOPE, scope);
+		this.put(OAuthConsts.OAuth.OAUTH_SCOPE, scope);
 	}
 	
 	public String getScope() {
-		return this.getParamter(OAuthConsts.OAuth.OAUTH_SCOPE);
+		return this.get(OAuthConsts.OAuth.OAUTH_SCOPE);
+	}
+	
+	/**
+	 * request is success or not
+	 * @return
+	 */
+	public boolean isSuccessed() {
+		return this.containsKey(OAuthError.OAUTH_ERROR);
 	}
 	
 	/**
@@ -78,15 +93,26 @@ public abstract class OAuthResponse {
 	 * @param value
 	 */
 	public void putExtenstionParameter(String parameter, String value) {
-		this.putParameter(parameter, value);
+		this.put(parameter, value);
 	}
 	
-	public HashMap<String, String> parameters() {
-		return this.parameters;
+	@Override
+	public String accessToken() {
+		return this.issuer.accessToken();
+	}
+
+	@Override
+	public String authorizationCode() {
+		return this.issuer.authorizationCode();
+	}
+
+	@Override
+	public String refreshToken() {
+		return this.issuer.refreshToken();
 	}
 
 	@Override
 	public String toString() {
-		return "OAuthResponse [parameters=" + parameters + "]";
+		return "OAuthResponse [" + this + "]";
 	}
 }

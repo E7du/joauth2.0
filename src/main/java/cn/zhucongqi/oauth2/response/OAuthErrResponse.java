@@ -26,15 +26,13 @@ import cn.zhucongqi.oauth2.exception.OAuthProblemException;
  */
 public class OAuthErrResponse extends OAuthResponse {
 
+	private static final long serialVersionUID = -8067815617069678224L;
+
 	@Override
 	protected void init() {
 		
 	}
 	
-	public OAuthErrResponse(OAuthValidator validator) {
-		super(validator);
-	}
-
 	public OAuthErrResponse(OAuthValidator validator, OAuthProblemException e) {
 		super(validator);
 		this.setError(e.getError()).setErrorDescription(e.getDescription());
@@ -45,7 +43,7 @@ public class OAuthErrResponse extends OAuthResponse {
 	 * @param error
 	 */
 	public OAuthErrResponse setError(String error) {
-		this.putParameter(OAuthError.OAUTH_ERROR, error);
+		this.put(OAuthError.OAUTH_ERROR, error);
 		return this;
 	}
 	
@@ -54,7 +52,7 @@ public class OAuthErrResponse extends OAuthResponse {
 	 * @param errorDecription
 	 */
 	public OAuthErrResponse setErrorDescription(String errorDecription) {
-		this.putParameter(OAuthError.OAUTH_ERROR_DESCRIPTION, errorDecription);
+		this.put(OAuthError.OAUTH_ERROR_DESCRIPTION, errorDecription);
 		return this;
 	}
 

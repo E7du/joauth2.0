@@ -35,30 +35,22 @@ import cn.zhucongqi.oauth2.issuer.OAuthIssuerKit;
  * @version
  */
 public class OAuthAccessToken extends OAuthResponse {
+
+	private static final long serialVersionUID = 4185034057888277981L;
 	
 	@Override
 	protected void init() {
-		this.setAccessToken(this.issuer.accessToken());
-		this.setRefreshToken(this.issuer.refreshToken());
-		this.setExpiresIn(Consts.TOKEN_EXPIRES_IN);//default value
+		this.put(OAuthConsts.OAuth.OAUTH_ACCESS_TOKEN, this.accessToken());
+		this.put(OAuthConsts.OAuth.OAUTH_REFRESH_TOKEN, this.refreshToken());
+		this.setExpriresIn(Consts.TOKEN_EXPIRES_IN);
 	}
-	
+
 	public OAuthAccessToken(OAuthValidator validator) {
 		super(validator);
 	}
 	
 	public OAuthAccessToken(OAuthValidator validator, OAuthIssuerKit issuer) {
-		super(validator);
-		this.issuer = issuer;
-	}
-	
-	/**
-	 * Set Access　Token
-	 * @param accessToken
-	 */
-	private OAuthAccessToken setAccessToken(String accessToken) {
-		this.putParameter(OAuthConsts.OAuth.OAUTH_ACCESS_TOKEN, accessToken);
-		return this;
+		super(validator, issuer);
 	}
 	
 	/**
@@ -66,16 +58,7 @@ public class OAuthAccessToken extends OAuthResponse {
 	 * @return
 	 */
 	public String getAccessToken() {
-		return this.getParamter(OAuthConsts.OAuth.OAUTH_ACCESS_TOKEN);
-	}
-	
-	/**
-	 * Set Refresh Token
-	 * @param refreshToken
-	 */
-	private OAuthAccessToken setRefreshToken(String refreshToken) {
-		this.putParameter(OAuthConsts.OAuth.OAUTH_REFRESH_TOKEN, refreshToken);
-		return this;
+		return this.get(OAuthConsts.OAuth.OAUTH_ACCESS_TOKEN);
 	}
 	
 	/**
@@ -83,16 +66,14 @@ public class OAuthAccessToken extends OAuthResponse {
 	 * @return
 	 */
 	public String getRefreshToken() {
-		return this.getParamter(OAuthConsts.OAuth.OAUTH_REFRESH_TOKEN);
+		return this.get(OAuthConsts.OAuth.OAUTH_REFRESH_TOKEN);
 	}
 	
 	/**
-	 * Set Expires In
-	 * @param expiresIn
+	 * Set Token ExpriresIn
 	 */
-	private OAuthAccessToken setExpiresIn(String expiresIn) {
-		this.putParameter(OAuthConsts.OAuth.OAUTH_EXPIRES_IN, expiresIn);
-		return this;
+	public void setExpriresIn(String ExpriresIn) {
+		this.put(OAuthConsts.OAuth.OAUTH_EXPIRES_IN, ExpriresIn);
 	}
 	
 	/**
@@ -100,7 +81,6 @@ public class OAuthAccessToken extends OAuthResponse {
 	 * @return
 	 */
 	public String getExpriresIn() {
-		return this.getParamter(OAuthConsts.OAuth.OAUTH_EXPIRES_IN);
+		return this.get(OAuthConsts.OAuth.OAUTH_EXPIRES_IN);
 	}
-	
 }
