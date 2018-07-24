@@ -24,6 +24,7 @@ import cn.zhucongqi.oauth2.exception.OAuthProblemException;
  * @author Jobsz [zcq@zhucongqi.cn]
  * @version
  */
+@SuppressWarnings({ "unchecked"})
 public class OAuthErrResponse extends OAuthResponse {
 
 	private static final long serialVersionUID = -8067815617069678224L;
@@ -55,7 +56,7 @@ public class OAuthErrResponse extends OAuthResponse {
 	 * Get Error
 	 */
 	public String getError() {
-		return this.get(OAuthError.OAUTH_ERROR);
+		return (String) this.get(OAuthError.OAUTH_ERROR);
 	}
 	
 	/**
@@ -72,7 +73,6 @@ public class OAuthErrResponse extends OAuthResponse {
 	 * @return
 	 */
 	public String getErrorDescription() {
-		return this.get(OAuthError.OAUTH_ERROR_DESCRIPTION);
+		return (String) this.get(OAuthError.OAUTH_ERROR_DESCRIPTION);
 	}
-
 }

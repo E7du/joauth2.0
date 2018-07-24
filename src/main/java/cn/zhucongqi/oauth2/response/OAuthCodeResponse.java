@@ -23,6 +23,7 @@ import cn.zhucongqi.oauth2.consts.OAuthConsts;
  * @author Jobsz [zcq@zhucongqi.cn]
  * @version
  */
+@SuppressWarnings({ "unchecked"})
 public class OAuthCodeResponse extends OAuthResponse {
 
 	private static final long serialVersionUID = 5581011166848147031L;
@@ -41,6 +42,6 @@ public class OAuthCodeResponse extends OAuthResponse {
 	}
 
 	public String getAuthorizationCode() {
-		return this.get(OAuthConsts.OAuth.OAUTH_AUTHORIZATION_CODE);
+		return (String) this.get(OAuthConsts.OAuth.OAUTH_AUTHORIZATION_CODE);
 	}
 }

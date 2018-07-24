@@ -34,6 +34,7 @@ import cn.zhucongqi.oauth2.issuer.OAuthIssuerKit;
  * @author Jobsz [zcq@zhucongqi.cn]
  * @version
  */
+@SuppressWarnings({ "unchecked"})
 public class OAuthAccessToken extends OAuthResponse {
 
 	private static final long serialVersionUID = 4185034057888277981L;
@@ -62,7 +63,7 @@ public class OAuthAccessToken extends OAuthResponse {
 	 * @return
 	 */
 	public String getAccessToken() {
-		return this.get(OAuthConsts.OAuth.OAUTH_ACCESS_TOKEN);
+		return (String) this.get(OAuthConsts.OAuth.OAUTH_ACCESS_TOKEN);
 	}
 	
 	/**
@@ -70,7 +71,7 @@ public class OAuthAccessToken extends OAuthResponse {
 	 * @return
 	 */
 	public String getRefreshToken() {
-		return this.get(OAuthConsts.OAuth.OAUTH_REFRESH_TOKEN);
+		return (String) this.get(OAuthConsts.OAuth.OAUTH_REFRESH_TOKEN);
 	}
 	
 	/**
@@ -85,6 +86,6 @@ public class OAuthAccessToken extends OAuthResponse {
 	 * @return
 	 */
 	public String getExpriresIn() {
-		return this.get(OAuthConsts.OAuth.OAUTH_EXPIRES_IN);
+		return (String) this.get(OAuthConsts.OAuth.OAUTH_EXPIRES_IN);
 	}
 }

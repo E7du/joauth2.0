@@ -29,12 +29,12 @@ import cn.zhucongqi.oauth2.kit.StrKit;
  * @author Jobsz [zcq@zhucongqi.cn]
  * @version
  */
-public abstract class OAuthResponse implements OAuthIssuer, Serializable {
+@SuppressWarnings({ "unchecked", "rawtypes" })
+public abstract class OAuthResponse extends HashMap implements OAuthIssuer, Serializable {
 	
 	private static final long serialVersionUID = 3592197949369821211L;
 	
 	protected OAuthIssuerKit issuer = null;
-	private HashMap<String, String> map = null;
 	
 	protected abstract void init();
 	
@@ -53,7 +53,6 @@ public abstract class OAuthResponse implements OAuthIssuer, Serializable {
 	}
 	
 	private void init(OAuthValidator validator) {
-		this.map = new HashMap<String, String>();
 		String state = validator.getState();
 		if (StrKit.notBlank(state)) {
 			this.setState(state);
@@ -66,20 +65,12 @@ public abstract class OAuthResponse implements OAuthIssuer, Serializable {
 		this.init();
 	}
 	
-	protected void put(String key, String value) {
-		this.map.put(key, value);
-	}
-	
-	protected String get(String key) {
-		return this.map.get(key);
-	}
-	
 	private void setState(String state) {
 		this.put(OAuthConsts.OAuth.OAUTH_STATE, state);
 	}
 	
 	public String getState() {
-		return this.get(OAuthConsts.OAuth.OAUTH_STATE);
+		return (String) this.get(OAuthConsts.OAuth.OAUTH_STATE);
 	}
 	
 	private void setScope(String scope) {
@@ -87,7 +78,7 @@ public abstract class OAuthResponse implements OAuthIssuer, Serializable {
 	}
 	
 	public String getScope() {
-		return this.get(OAuthConsts.OAuth.OAUTH_SCOPE);
+		return (String) this.get(OAuthConsts.OAuth.OAUTH_SCOPE);
 	}
 	
 	/**
@@ -95,7 +86,7 @@ public abstract class OAuthResponse implements OAuthIssuer, Serializable {
 	 * @return
 	 */
 	public boolean successed() {
-		return this.map.containsKey(OAuthError.OAUTH_ERROR);
+		return this.containsKey(OAuthError.OAUTH_ERROR);
 	}
 	
 	/**
