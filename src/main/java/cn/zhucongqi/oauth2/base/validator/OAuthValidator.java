@@ -22,6 +22,7 @@ import java.util.List;
 import java.util.Set;
 
 import cn.zhucongqi.oauth2.base.clientcredentials.OAuthClientCredentials;
+import cn.zhucongqi.oauth2.base.response.OAuthResponse;
 import cn.zhucongqi.oauth2.consts.OAuthConsts;
 import cn.zhucongqi.oauth2.consts.OAuthError;
 import cn.zhucongqi.oauth2.exception.OAuthProblemException;
@@ -247,7 +248,7 @@ public abstract class OAuthValidator {
      * 
      * @throws OAuthProblemException
      */
-    public Object validate() throws OAuthProblemException {
+    public OAuthResponse validate() throws OAuthProblemException {
         this.validateContentType();
         this.validateMethod();
         this.validateRequiredParameters();

@@ -16,6 +16,7 @@
 package cn.zhucongqi.oauth2.request;
 
 import cn.zhucongqi.oauth2.base.clientcredentials.OAuthClientCredentials;
+import cn.zhucongqi.oauth2.base.response.OAuthResponse;
 import cn.zhucongqi.oauth2.base.validator.OAuthValidator;
 import cn.zhucongqi.oauth2.exception.OAuthProblemException;
 import cn.zhucongqi.oauth2.validators.AccessTokenRequestValidator;
@@ -146,7 +147,7 @@ public class OAuthRequest {
      * 
      * @throws OAuthProblemException
      */
-    public Object validate() throws OAuthProblemException {
+    public OAuthResponse validate() throws OAuthProblemException {
     	return this.validator.validate();
     }
 }

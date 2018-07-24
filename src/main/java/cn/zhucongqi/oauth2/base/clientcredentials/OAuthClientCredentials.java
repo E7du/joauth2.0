@@ -15,6 +15,7 @@
 */
 package cn.zhucongqi.oauth2.base.clientcredentials;
 
+import cn.zhucongqi.oauth2.base.response.OAuthResponse;
 import cn.zhucongqi.oauth2.base.validator.OAuthValidator;
 import cn.zhucongqi.oauth2.exception.OAuthProblemException;
 
@@ -28,5 +29,5 @@ public interface OAuthClientCredentials {
 	 * @param request
 	 * @throws AuthProblemException
 	 */
-	public Object validateClientCredentials(OAuthValidator validator) throws OAuthProblemException;
+	public OAuthResponse validateClientCredentials(OAuthValidator validator) throws OAuthProblemException;
 }

@@ -15,6 +15,7 @@
 */
 package cn.zhucongqi.oauth2.base.services;
 
+import cn.zhucongqi.oauth2.base.response.OAuthResponse;
 import cn.zhucongqi.oauth2.request.OAuthHttpServletRequest;
 
 /**
@@ -45,9 +46,9 @@ public interface OAuthApi {
      * error_description : the erros repsonse description <br/>
      * state : The exact value received from the client.
 	 */
-	public Object authrize(OAuthHttpServletRequest request);
+	public OAuthResponse authrize(OAuthHttpServletRequest request);
 	
-	public Object authrizeCode(OAuthHttpServletRequest request);
+	public OAuthResponse authrizeCode(OAuthHttpServletRequest request);
 	
 	/**
 	 * Access Token Request <br/>
@@ -92,9 +93,9 @@ public interface OAuthApi {
      * state : The exact value received from the
          client.
 	 */
-	public Object accessToken(OAuthHttpServletRequest request);
+	public OAuthResponse accessToken(OAuthHttpServletRequest request);
 	
-	public Object secureAccessToken(OAuthHttpServletRequest request);
+	public OAuthResponse secureAccessToken(OAuthHttpServletRequest request);
 	
 	/**
 	 * Refreshing an Access Token <br/>
@@ -122,6 +123,6 @@ public interface OAuthApi {
      * state : The exact value received from the
          client.
 	 */
-	public Object refreshToken(OAuthHttpServletRequest request);
+	public OAuthResponse refreshToken(OAuthHttpServletRequest request);
 		
 }
